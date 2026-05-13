@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(Ecoradar());
+void main() {
+  runApp(EcoradarApp());
+}
 
-class Ecoradar extends StatelessWidget {
+class EcoradarApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ecoradar',
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
       home: HomePage(),
     );
   }
@@ -17,20 +21,27 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Ecoradar'), centerTitle: true),
+      appBar: AppBar(
+        title: Text('Ecoradar'),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
-          SizedBox(height: 36),
+          SizedBox(height: 16),
+          // Exibição da logo como asset
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Image.asset('', height: 250),
+            child: Image.asset(
+              '', // Caminho da imagem
+              height: 250,
+            ),
           ),
           Text(
             'Conheça, Inspire, Preserve',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 20),
-          Expanded(child: NewsListPage()),
+          Expanded(child: NewsListPage()), // Lista de notícias
         ],
       ),
     );
@@ -49,20 +60,20 @@ class NewsListPage extends StatelessWidget {
     News(
       title: 'Plantas urbanas ajudam a reduzir a poluição do ar',
       content:
-          'Estudos comprdataovam que as plantas urbanas podem ajudar na redução da poluição atmosférica, melhorando qualidade do ar nas cidades. PLantas como árvores e jarins podem filtrar gases nocivos e proporcionar um ambiente mais saudável.',
+          'Estudos comprovam que as plantas urbanas podem ajudar na redução da poluição atmosférica, melhorando a qualidade do ar nas cidades. Plantas como árvores e jardins podem filtrar gases nocivos e proporcionar um ambiente mais saudável.',
     ),
     News(
       title: 'Iniciativas de reciclagem crescem nas cidades brasileiras',
       content:
-          'Nos últimos anos, diversas cidades brasileiras tem se empenhado a coleta seletiva e incentivar a reciclagem. Com isso, muitos materiais recicláveis como pláticos, vidros e papéis tem sido reciclados, contribuindo para a redução do impacto ambiental.',
+          'Nos últimos anos, diversas cidades brasileiras têm se empenhado em aumentar a coleta seletiva e incentivar a reciclagem. Com isso, muitos materiais recicláveis como plásticos, vidros e papéis têm sido reciclados, contribuindo para a redução do impacto ambiental.',
     ),
     News(
       title: 'Comunidades adotam energia solar como alternativa sustentável',
       content:
-          'Cada vez mais as comunidades no Brasil estão adotando a energia solar como alternativa sustentável e econômica. O uso de painéis solares está se expandindo, ajudando a reduzir a dependência de fontes de energia não renováveis e a diminuir a pegada de carbono.',
+          'Cada vez mais, as comunidades no Brasil estão adotando a energia solar como alternativa sustentável e econômica. O uso de painéis solares está se expandindo, ajudando a reduzir a dependência de fontes de energia não renováveis e a diminuir a pegada de carbono.',
     ),
     News(
-      title: 'Estudo mostra o impacto do desmatamento na biodiversidade',
+      title: 'Estudo mostra impacto do desmatamento na biodiversidade',
       content:
           'Pesquisas recentes revelam que o desmatamento nas florestas tropicais está provocando sérios danos à biodiversidade global. A destruição dos habitats naturais está colocando muitas espécies de plantas e animais em risco de extinção.',
     ),
@@ -76,7 +87,6 @@ class NewsListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      // ListView - o scrol da tela do aparelho
       itemCount: news.length,
       itemBuilder: (context, index) {
         return Card(
@@ -109,12 +119,14 @@ class NewsListPage extends StatelessWidget {
 class NewsDetailPage extends StatelessWidget {
   final News news;
 
-  NewsDetailPage({required this.news});
+  NewsDetailPage({required this.news}); // Construtor com a notícia completa
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Detalhes da Notícia')),
+      appBar: AppBar(
+        title: Text('Detalhes da Notícia'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -122,7 +134,10 @@ class NewsDetailPage extends StatelessWidget {
           children: [
             Text(
               news.title,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(height: 20),
             Text(
@@ -130,7 +145,7 @@ class NewsDetailPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
-                height: 1.5,
+                height: 1.5, // Melhora o espaçamento entre linhas
               ),
             ),
           ],
